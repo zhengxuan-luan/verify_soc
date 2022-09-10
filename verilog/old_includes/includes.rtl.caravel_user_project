@@ -1,0 +1,29 @@
+# Caravel user project includes
+-v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
+-v $(USER_PROJECT_VERILOG)/rtl/rvj1_caravel_soc.v
+-v $(USER_PROJECT_VERILOG)/rtl/instr_ram_mux.v 
+-v $(USER_PROJECT_VERILOG)/rtl/data_ram_mux.v 
+-v $(USER_PROJECT_VERILOG)/rtl/wishbone_mux.v 
+-v $(USER_PROJECT_VERILOG)/rtl/gpio.v
+-v $(USER_PROJECT_VERILOG)/rtl/timer.v
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/inc/jedro_1_defines.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/jedro_1_ifu.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/jedro_1_decoder.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/jedro_1_regfile.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/jedro_1_csr.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/jedro_1_alu.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/jedro_1_lsu.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/jedro_1_top.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/adder/full_adder_1b.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/adder/ripple_carry_adder_Nb.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/compare/equality_Nb.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/compare/less_than_sign_Nb.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/compare/less_than_unsign_Nb.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/shift/barrel_shifter_left_32b.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/shift/barrel_shifter_right_32b.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/shift/mux2x1.v 
+-v $(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/alu/sign_extension/sign_extender.v 
++incdir+$(USER_PROJECT_VERILOG)/rtl/riscv-jedro-1/rtl/inc/ 
++incdir+$(USER_PROJECT_VERILOG)/rtl/ 
++incdir+$(USER_PROJECT_VERILOG)/../caravel/verilog/rtl/
++timescale+1ns/1ps

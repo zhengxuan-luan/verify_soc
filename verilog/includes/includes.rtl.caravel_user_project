@@ -1,0 +1,52 @@
+# Caravel user project includes
++incdir+$(USER_PROJECT_VERILOG)/rtl/
++incdir+$(USER_PROJECT_VERILOG)/rtl/hehe/src/
++incdir+$(USER_PROJECT_VERILOG)/rtl/hehe/src/units/
+
+-v $(USER_PROJECT_VERILOG)/rtl/inc/rvj1_defines.v
+
+-v $(USER_PROJECT_VERILOG)/rtl/caravel_defines.v
+-v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v
+-v $(USER_PROJECT_VERILOG)/rtl/gpio.v
+-v $(USER_PROJECT_VERILOG)/rtl/data_ram_mux.v
+-v $(USER_PROJECT_VERILOG)/rtl/instr_ram_mux.v
+-v $(USER_PROJECT_VERILOG)/rtl/timer.v
+-v $(USER_PROJECT_VERILOG)/rtl/rvj1_caravel_soc.v
+-v $(USER_PROJECT_VERILOG)/rtl/wishbone_mux.v
+
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/hehe.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/params.vh
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/core_empty.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/btb.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/counter_rob.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/counter_tmp.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/counter.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/csr.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/decode.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/excep_ctrl.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/fake_icache.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/fetch.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/fifo_tmp.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/fifo.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/gshare.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/ins_buffer.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/new_alu.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/new_fu.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/physical_regfile.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/units/rcu.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/pipeline/backend.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/pipeline/frontend.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/mmu/leaf_pte_check.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/mmu/mmu_sv39.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/mmu/ptw.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/lsu/ac.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/lsu/agu.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/lsu/cu.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/lsu/lsq.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/lsu/nblsu.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/lsu/lr.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/cache/l1dcache.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/cache/l1icache_32.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/cache/cacheblock/sky130_sram_1kbyte_1rw1r_32x256_8.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/cache/cacheblock/std_dffe.v
+-v $(USER_PROJECT_VERILOG)/rtl/hehe/src/cache/cacheblock/std_dffr.v
