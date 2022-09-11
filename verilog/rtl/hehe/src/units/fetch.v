@@ -1,6 +1,6 @@
 `ifndef FETCH_V
 `define FETCH_V
-`include "../params.vh"
+// `include "../params.vh"
 module fetch #(
     // parameter INS_BUFFER = 64,
     parameter BTB_SIZE = 4,
@@ -84,7 +84,7 @@ wire btb_token;
 // wire buffer_full;
 wire [31:0] pc_from_btb;
 assign is_exec_branch = valid_real_branch && (real_branch != pc_out);
-wire flush = (reset | is_exec_branch | trap | mret) & !ins_empty;
+wire flush = (is_exec_branch | trap | mret) & !ins_empty;
 
 assign exception_valid_o = pc[1:0] != 2'b00;
 assign ecause_o = (pc[1:0] != 2'b00) ? EXCEPTION_INSTR_ADDR_MISALIGNED : 0;
@@ -213,7 +213,8 @@ ins_buffer #(
     .INS_BUFFER_SIZE_WIDTH(INS_BUFFER_SIZE_WIDTH)
 ) buffer_u(
     .clk(clk),
-    .reset(flush),
+    .reset(reset),
+    .flush(flush),
     .pc_in(ins_pc_in),
     .next_pc_in(ins_next_pc_in),
     .instruction_in(instruction_in),

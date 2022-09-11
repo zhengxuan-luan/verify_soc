@@ -127,9 +127,18 @@ module data_ram_mux #(
         end
     end
     
+    reg core_ack_rff;
     always @(posedge wb_clk_i) begin
-        if (wb_rst_i) core_ack <= 0;
-        else          core_ack <= stb && is_ram;
+        if (wb_rst_i) begin
+            core_ack <= 0;
+            core_ack_rff <= 0;
+        end else if (wbs_cyc_i) begin
+            core_ack_rff <= stb && is_ram;
+            core_ack <= core_ack_rff;
+        end else begin
+            core_ack_rff <= 0;
+            core_ack <= 0;
+        end
     end
 
 	/****************************

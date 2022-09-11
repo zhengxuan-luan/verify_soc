@@ -57,6 +57,7 @@ rvj1_adding.bin: rvj1_adding.S
 	mv rvj1_adding_mod.o rvj1_adding.bin
 
 %.elf: %.c $(LINKER_SCRIPT) $(SOURCE_FILES) rvj1_adding.bin
+# elf:
 	${GCC_PATH}/${GCC_PREFIX}-gcc -g \
 	-I$(FIRMWARE_PATH) \
 	-I$(VERILOG_PATH)/dv/generated \
@@ -64,6 +65,8 @@ rvj1_adding.bin: rvj1_adding.S
 	-I$(VERILOG_PATH)/common \
 	  $(CPUFLAGS) \
 	-Wl,-Bstatic,-T,$(LINKER_SCRIPT),--strip-debug \
+	# -ffreestanding -nostdlib -o adding.elf rvj1_adding.bin /work/home/zxluan/hehe/rvj1-caravel-soc-mpw7/mgmt_core_wrapper/verilog/dv/firmware/crt0_vex.S /work/home/zxluan/hehe/rvj1-caravel-soc-mpw7/mgmt_core_wrapper/verilog/dv/firmware/isr.c adding.c 
+
 	-ffreestanding -nostdlib -o $@ rvj1_adding.bin $(SOURCE_FILES) $< 
 %.lst: %.elf
 	${GCC_PATH}/${GCC_PREFIX}-objdump -d -S $< > $@
@@ -86,11 +89,11 @@ rvj1_adding.bin: rvj1_adding.S
 ## RTL
 ifeq ($(SIM),RTL)
     ifeq ($(CONFIG),caravel_user_project)
-		iverilog -Ttyp -DFUNCTIONAL -DSIM -DUSE_POWER_PINS -DUNIT_DELAY=#1 \
+		iverilog -g2012 -DFUNCTIONAL -DSIM -DUSE_POWER_PINS -DUNIT_DELAY=#1 \
         -f$(VERILOG_PATH)/includes/includes.rtl.caravel \
         -f$(USER_PROJECT_VERILOG)/includes/includes.rtl.$(CONFIG) -o $@ $<
     else
-		iverilog -Ttyp -DFUNCTIONAL -DSIM -DUSE_POWER_PINS -DUNIT_DELAY=#1 \
+		iverilog -g2012 -DFUNCTIONAL -DSIM -DUSE_POWER_PINS -DUNIT_DELAY=#1 \
 		-f$(VERILOG_PATH)/includes/includes.rtl.$(CONFIG) \
 		-f$(CARAVEL_PATH)/rtl/__user_project_wrapper.v -o $@ $<
     endif
@@ -158,6 +161,10 @@ ifeq (,$(wildcard $(PDK_ROOT)/$(PDK)/libs.ref/*/verilog))
 SIM_DEFINES := ${SIM_DEFINES} -DEF_STYLE
 endif
 
+test:
+	-rm adding.vvp adding.vcd
+	make adding.vvp
+	vvp adding.vvp
 
 # ---- Clean ----
 

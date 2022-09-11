@@ -60,7 +60,7 @@ module adding_tb;
 	end
     
 	initial begin
-		#500000;
+		#1200000;
 		$finish;
 	end
 

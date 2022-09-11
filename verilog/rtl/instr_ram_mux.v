@@ -110,16 +110,46 @@ module instr_ram_mux #(
             rdata = 0;
         end
         else begin
-            ram_csb0   = ~(cyc & stb);  // active low expecting 0
-            ram_web0   = we;  // we are only reading
+            // ram_csb0   = ~(cyc & stb);  // active low expecting 0
+            ram_csb0   = 0;
+            ram_web0   = ~we;  // we are only reading
             ram_wmask0 = 0;  // is irrelevant for reading
             ram_addr0  = addr[RAM_ADDR_WIDTH_BYTES-1:2];
             ram_din0   = 0;
-            ack = 0; //iram forever ready when sel_wb=0
 			wbs_dat_o  = 0;
 			wbs_ack_o  = 0;
             rdata      = ram_dout0;
         end
     end
 
+    reg ack_rff;
+    // reg ack_rfff;
+
+    // always @(posedge wb_clk_i or negedge wb_rst_i) begin
+    //     if (wb_rst_i) begin
+    //         ack <= 0;
+    //         ack_rff <= 0;
+    //     end else begin
+    //         ack_rff <= (stb & cyc);
+    //         ack_rfff <= ack_rff;
+    //     end
+    // end
+
+    // always @(posedge wb_clk_i or negedge wb_rst_i) begin
+    //     if (wb_ack_i) begin
+    //         ack <= 0;
+    //     end
+    always @(posedge wb_clk_i or negedge wb_rst_i) begin
+        if (wb_rst_i) begin
+            ack <= 0;
+            ack_rff <= 0;
+        end else if(cyc) begin
+            ack_rff <= (stb & cyc);
+            ack <= ack_rff;
+        end
+        else begin
+            ack <= 0;
+            ack_rff <= 0;
+        end
+    end
 endmodule

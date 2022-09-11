@@ -5,6 +5,7 @@ module ins_buffer #(
 ) (
     input clk,
     input reset,
+    input flush,
     input [31:0] pc_in,
     input [31:0] next_pc_in,
     input [31:0] instruction_in,
@@ -35,6 +36,7 @@ fifo_tmp #(
 ) ins_buffer(
     .clk(clk),
     .reset(reset),
+    .flush(flush),
     .wr_en(wr_en),
     .rd_en(rd_en&!ins_empty),
     .wdata(buffer_input_line),

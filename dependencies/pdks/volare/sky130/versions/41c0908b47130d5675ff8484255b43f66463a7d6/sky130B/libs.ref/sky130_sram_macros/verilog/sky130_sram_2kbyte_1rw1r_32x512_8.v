@@ -49,6 +49,7 @@ module sky130_sram_2kbyte_1rw1r_32x512_8(
   // All inputs are registers
   always @(posedge clk0)
   begin
+    $display("!");
     csb0_reg = csb0;
     web0_reg = web0;
     wmask0_reg = wmask0;

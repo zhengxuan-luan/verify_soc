@@ -5,6 +5,7 @@ module fifo_tmp #(
 ) (
     input clk,
     input reset,
+    input flush,
     input wr_en,
     input rd_en,
     input [FIFO_DATA_WIDTH-1:0] wdata,
@@ -31,6 +32,10 @@ module fifo_tmp #(
     //write fifo
     always @(posedge clk) begin
         if (reset) begin
+            for (i = 0; i < FIFO_SIZE; i = i + 1) begin
+                fifo_queue[i] <= 0;
+            end
+        end else if (flush) begin
             for (i = 0; i < FIFO_SIZE; i = i + 1) begin
                 fifo_queue[i] <= 0;
             end
@@ -74,6 +79,8 @@ module fifo_tmp #(
     always @(posedge clk) begin
         if (reset) begin
             fifo_recount <= 0;
+        end else if (flush) begin
+            fifo_recount <= 0;  
         end else if (wr_line_end) begin
             fifo_recount <= 1;
         end else if (fifo_turn_arroud) begin
@@ -84,12 +91,13 @@ module fifo_tmp #(
     assign fifo_turn_arroud = fifo_recount & rd_line_end;
 
     //write counter
-    counter #(
+    counter_tmp #(
         .CNT_SIZE(FIFO_SIZE),
         .CNT_SIZE_WIDTH(FIFO_SIZE_WIDTH)
     ) wr_cnt(
         .clk(clk),
         .reset(reset),
+        .flush(flush),
         .cnt_add_flag(wr_cnt_flag),
         .cnt(wr_line),
         .cnt_end(wr_line_end)
@@ -98,12 +106,13 @@ module fifo_tmp #(
     assign wr_cnt_flag = wr_en & !fifo_full;
 
     //read counter
-    counter #(
+    counter_tmp #(
         .CNT_SIZE(FIFO_SIZE),
         .CNT_SIZE_WIDTH(FIFO_SIZE_WIDTH)
     ) rd_cnt(
         .clk(clk),
         .reset(reset),
+        .flush(flush),
         .cnt_add_flag(rd_cnt_flag),
         .cnt(rd_line),
         .cnt_end(rd_line_end)

@@ -41,7 +41,8 @@ parameter PHYSICAL_ADDR_LEN = 32;
 parameter IMM_LEN = 32;
 parameter AXI_ID_WIDTH = 10;
 parameter DCACHE_WB_DATA_LEN = 32;
-parameter RESET_VECTOR = 32'h8000_0000;
+// parameter RESET_VECTOR = 32'h8000_0000;
+parameter RESET_VECTOR = 32'h3000_0000;
 
 parameter EXCEPTION_CODE_WIDTH = 4;
 parameter PHY_REG_ADDR_WIDTH = 6;

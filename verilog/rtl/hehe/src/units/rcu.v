@@ -496,9 +496,9 @@ counter_rob  #(
 )wr_rob_counter(
     .clk(clk),
     .reset(reset),
-    .cnt_reset('0),
+    .cnt_reset(0),
     .cnt_add_flag(rob_wr_ready),
-    .cnt_vector('0),
+    .cnt_vector(0),
     .cnt(wr_rob_line),
     .cnt_end(wr_rob_line_end)
 );

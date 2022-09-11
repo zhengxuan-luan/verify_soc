@@ -46,7 +46,7 @@ module adding_tb;
 
 	initial begin
 		$dumpfile("adding.vcd");
-		$dumpvars(0, adding_tb);
+		$dumpvars;
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
 		repeat (220) begin
@@ -60,7 +60,7 @@ module adding_tb;
 			$display ("Monitor: Timeout, Test in adding WB Port (RTL) FAILED!!!!!!!!!!!!!!!!!!!!!");
 		`endif
 		$display("%c[0m",27);
-		$finish;
+		// $finish;
 	end
 
 	initial begin
@@ -73,9 +73,14 @@ module adding_tb;
 		`else
 		    $display("Monitor: adding WB (RTL) PASSED-----------------------------");
 		`endif
-	    $finish;
+	    // $finish;
 	end
 
+    initial begin
+        #1900000;
+        $finish;
+    end
+    
 	initial begin
 		RSTB <= 1'b0;
 		CSB  <= 1'b1;		// Force CSB high

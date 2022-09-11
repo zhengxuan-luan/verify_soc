@@ -283,10 +283,10 @@ module rvj1_caravel_soc #(
     //                                                                .dram_ack     (cpu2dmux_ack),
     //                                                                .dram_err     (cpu2dmux_err));
 
-hehe hehe_core_top
+hehe hehe_u
 (
     .clk(wb_clk_i),
-    .reset(hehe_rstn),
+    .reset(~hehe_rstn),
     .meip('0),
     
     // lsu <-> Soc
